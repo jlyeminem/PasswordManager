@@ -7,6 +7,10 @@ public class LockWarnBean {
     private String mLockWarn;
     private int mColor;
 
+    public LockWarnBean(String lockWarn) {
+        mLockWarn = lockWarn;
+    }
+
     public LockWarnBean(String lockWarn, int color) {
         mLockWarn = lockWarn;
         mColor = color;
