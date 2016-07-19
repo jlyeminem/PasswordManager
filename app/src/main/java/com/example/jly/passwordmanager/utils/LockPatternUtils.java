@@ -24,7 +24,7 @@ public class LockPatternUtils {
     /**
      * The minimum number of dots in a valid pattern.
      */
-    public static final int MIN_LOCK_PATTERN_SIZE = 4;
+    public static final int MIN_LOCK_PATTERN_SIZE = 3;
     /**
      * The maximum number of incorrect attempts before the user is prevented
      * from trying again for {@link #FAILED_ATTEMPT_TIMEOUT_MS}.

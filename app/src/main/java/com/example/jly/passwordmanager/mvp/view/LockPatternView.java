@@ -102,6 +102,7 @@ public class LockPatternView extends View {
     private int mAspect;
     private final Matrix mCircleMatrix = new Matrix();
 
+
     /**
      * Represents a cell in the 3 X 3 matrix of the unlock pattern view.
      */
@@ -189,7 +190,7 @@ public class LockPatternView extends View {
     /**
      * The call back interface for detecting patterns entered by the user.
      */
-    public static interface OnPatternListener {
+    public interface OnPatternListener {
 
         /**
          * A new pattern has begun.
