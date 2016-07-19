@@ -1,7 +1,8 @@
 package com.example.jly.passwordmanager.mvp.view;
 
 /**
- * Created by jly on 16-7-19.
+ * 有关与锁屏界面的接口
+ * Created by jly on 16-6-11.
  */
 public interface CreateLockView {
     void initLockPatternView();

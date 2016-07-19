@@ -16,7 +16,7 @@ import java.util.List;
 
 /**
  * CreateLockActivity具体实现
- * Created by jly on 16-7-15.
+ * Created by jly on 16-6-11.
  */
 public class CreateLockActivityImpl implements ActivityPresenter {
     private LockWarnBean mLockWarnBean;
