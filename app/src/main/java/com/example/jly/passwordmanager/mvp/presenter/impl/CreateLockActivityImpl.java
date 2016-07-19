@@ -15,6 +15,7 @@ import com.example.jly.passwordmanager.utils.LockPatternUtils;
 import java.util.List;
 
 /**
+ * CreateLockActivity具体实现
  * Created by jly on 16-7-15.
  */
 public class CreateLockActivityImpl implements ActivityPresenter {
@@ -101,6 +102,7 @@ public class CreateLockActivityImpl implements ActivityPresenter {
             } else {
                 fingerSecondError();
             }
+            mCreateLockView.lockErrorShow();
         } else {
             if (!isFirstDone) {
                 fingerFisrtPressDone();
@@ -114,6 +116,7 @@ public class CreateLockActivityImpl implements ActivityPresenter {
                     fingerAllDone();
                 } else {
                     fingerSecondError();
+                    mCreateLockView.lockErrorShow();
                 }
             }
         }

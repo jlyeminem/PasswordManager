@@ -18,12 +18,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-/**
- * 图案解锁加密、解密工具类
- * 
- * @author way
- * 
- */
+
 public class ShortLockPatternUtils {
 	private static final String TAG = "LockPatternUtils";
 	private static final String LOCK_PATTERN_FILE = "short_gesture.key";

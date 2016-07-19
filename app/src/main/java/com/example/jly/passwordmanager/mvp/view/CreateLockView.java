@@ -6,7 +6,7 @@ package com.example.jly.passwordmanager.mvp.view;
 public interface CreateLockView {
     void initLockPatternView();
 
-    void lockDisplayError();
+    void lockErrorShow();
 
     void setResults(int isSuccess);
 

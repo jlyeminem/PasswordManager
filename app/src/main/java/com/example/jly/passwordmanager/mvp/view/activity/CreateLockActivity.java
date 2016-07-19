@@ -14,21 +14,16 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
-/**
- * Created by jly on 16-7-15.
- */
 public class CreateLockActivity extends BaseActivity implements CreateLockView, LockPatternView.OnPatternListener{
     @BindView(R.id.lockView)
     LockPatternView mLockView;
-    private ActivityCreateLockBinding mBinding;
     private CreateLockActivityImpl mActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
-//        mLockView = (LockPatternView) findViewById(R.id.lockView);
-        mBinding = (ActivityCreateLockBinding) this.mDataBinding;
+        ActivityCreateLockBinding mBinding = (ActivityCreateLockBinding) this.mDataBinding;
         mActivity = new CreateLockActivityImpl(this, this,mBinding);
         mActivity.onCreate(savedInstanceState);
     }
@@ -69,8 +64,8 @@ public class CreateLockActivity extends BaseActivity implements CreateLockView, 
     }
 
     @Override
-    public void lockDisplayError() {
-
+    public void lockErrorShow() {
+        mLockView.setDisplayMode(LockPatternView.DisplayMode.Wrong);
     }
 
     @Override
