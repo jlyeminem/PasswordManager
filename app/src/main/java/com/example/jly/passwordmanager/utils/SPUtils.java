@@ -18,6 +18,8 @@ public class SPUtils {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         if (object instanceof  String) {
             editor.putString(key,(String) object);
+        } else if (object instanceof Boolean) {
+            editor.putBoolean(key,(Boolean) object);
         }
         SharedPreferencesCompat.apply(editor);
     }
@@ -26,6 +28,8 @@ public class SPUtils {
         SharedPreferences sharedPreferences = context.getSharedPreferences(FILE_NAME,Context.MODE_PRIVATE);
         if (defaultObject instanceof String) {
            return sharedPreferences.getString(key, (String) defaultObject);
+        } else if (defaultObject instanceof Boolean) {
+            return sharedPreferences.getBoolean(key,(Boolean) defaultObject);
         }
         return null;
     }

@@ -6,11 +6,13 @@ import android.os.Bundle;
 
 import com.example.jly.passwordmanager.R;
 import com.example.jly.passwordmanager.databinding.ActivityCreateLockBinding;
+import com.example.jly.passwordmanager.mvp.model.Constants;
 import com.example.jly.passwordmanager.mvp.model.bean.LockWarnBean;
 import com.example.jly.passwordmanager.mvp.presenter.ActivityPresenter;
 import com.example.jly.passwordmanager.mvp.view.LockView;
 import com.example.jly.passwordmanager.mvp.view.LockPatternView;
 import com.example.jly.passwordmanager.utils.LockPatternUtils;
+import com.example.jly.passwordmanager.utils.SPUtils;
 
 import java.util.List;
 
@@ -114,6 +116,7 @@ public class CreateLockActivityImpl implements ActivityPresenter {
                 LockPatternUtils lockPatternUtils = LockPatternUtils.getInstances(mContext);
                 if (lockPatternUtils.checkPattern(pattern)) {
                     fingerAllDone();
+                    SPUtils.put(mContext, Constants.CREATE_LOCK_SUCCESS,true);
                 } else {
                     fingerSecondError();
                     mLockView.lockErrorShow();
