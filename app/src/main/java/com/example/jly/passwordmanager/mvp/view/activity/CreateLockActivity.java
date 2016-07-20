@@ -5,7 +5,7 @@ import android.os.Bundle;
 import com.example.jly.passwordmanager.R;
 import com.example.jly.passwordmanager.databinding.ActivityCreateLockBinding;
 import com.example.jly.passwordmanager.mvp.presenter.impl.CreateLockActivityImpl;
-import com.example.jly.passwordmanager.mvp.view.CreateLockView;
+import com.example.jly.passwordmanager.mvp.view.LockView;
 import com.example.jly.passwordmanager.mvp.view.LockPatternView;
 
 import java.util.List;
@@ -14,7 +14,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
-public class CreateLockActivity extends BaseActivity implements CreateLockView, LockPatternView.OnPatternListener{
+public class CreateLockActivity extends BaseActivity implements LockView, LockPatternView.OnPatternListener{
     @BindView(R.id.lockView)
     LockPatternView mLockView;
     private CreateLockActivityImpl mActivity;

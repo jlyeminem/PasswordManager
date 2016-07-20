@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        >
+    <data>
+        <variable
+            name="lockWarn"
+            type="com.example.jly.passwordmanager.mvp.model.bean.LockWarnBean"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width = "match_parent"
+        android:layout_height = "match_parent"
+        android:background="?attr/colorPrimary"
+        android:orientation="vertical"
+        android:gravity="center">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:textColor="@android:color/white"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:text="@{lockWarn.lockWarn}"/>
+        <com.example.jly.passwordmanager.mvp.view.LockPatternView
+            android:id="@+id/lockView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="32dp"
+            android:paddingBottom="32dp"
+            android:paddingLeft="32dp"
+            android:paddingRight="32dp"/>
+
+    </LinearLayout>
+</layout>

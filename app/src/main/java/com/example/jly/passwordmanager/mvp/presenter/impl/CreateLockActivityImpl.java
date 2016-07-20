@@ -8,7 +8,7 @@ import com.example.jly.passwordmanager.R;
 import com.example.jly.passwordmanager.databinding.ActivityCreateLockBinding;
 import com.example.jly.passwordmanager.mvp.model.bean.LockWarnBean;
 import com.example.jly.passwordmanager.mvp.presenter.ActivityPresenter;
-import com.example.jly.passwordmanager.mvp.view.CreateLockView;
+import com.example.jly.passwordmanager.mvp.view.LockView;
 import com.example.jly.passwordmanager.mvp.view.LockPatternView;
 import com.example.jly.passwordmanager.utils.LockPatternUtils;
 
@@ -22,12 +22,12 @@ public class CreateLockActivityImpl implements ActivityPresenter {
     private LockWarnBean mLockWarnBean;
     private Context mContext;
     private ActivityCreateLockBinding mBinding;
-    private CreateLockView mCreateLockView;
+    private LockView mLockView;
     private boolean isFirstDone = false;
 
-    public CreateLockActivityImpl(Context context, CreateLockView createLockView, ActivityCreateLockBinding binding) {
+    public CreateLockActivityImpl(Context context, LockView lockView, ActivityCreateLockBinding binding) {
         mContext = context;
-        mCreateLockView = createLockView;
+        mLockView = lockView;
         mBinding = binding;
     }
 
@@ -35,7 +35,7 @@ public class CreateLockActivityImpl implements ActivityPresenter {
     public void onCreate(Bundle savedInstanceState) {
         mLockWarnBean = new LockWarnBean(mContext.getResources().getString(R.string.set_password));
         mBinding.setLockWarn(mLockWarnBean);
-        mCreateLockView.initLockPatternView();
+        mLockView.initLockPatternView();
     }
 
 
@@ -102,13 +102,13 @@ public class CreateLockActivityImpl implements ActivityPresenter {
             } else {
                 fingerSecondError();
             }
-            mCreateLockView.lockErrorShow();
+            mLockView.lockErrorShow();
         } else {
             if (!isFirstDone) {
                 fingerFisrtPressDone();
                 LockPatternUtils lockPatternUtils = LockPatternUtils.getInstances(mContext);
                 lockPatternUtils.saveLockPattern(pattern);
-                mCreateLockView.clearPattern();
+                mLockView.clearPattern();
                 isFirstDone = true;
             } else {
                 LockPatternUtils lockPatternUtils = LockPatternUtils.getInstances(mContext);
@@ -116,7 +116,7 @@ public class CreateLockActivityImpl implements ActivityPresenter {
                     fingerAllDone();
                 } else {
                     fingerSecondError();
-                    mCreateLockView.lockErrorShow();
+                    mLockView.lockErrorShow();
                 }
             }
         }

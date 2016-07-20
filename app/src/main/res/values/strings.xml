@@ -26,4 +26,6 @@
     <string name="finger_second_error">与上次输入不一致，请重试</string>
     <string name="finger_first_done">请重复第一次输入</string>
     <string name="finger_all_done">密码绘制成功</string>
+    <string name="draw_password">绘制您的图案</string>
+    <string name="wrong_password">图案错误，请重试</string>
 </resources>
