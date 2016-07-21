@@ -35,7 +35,7 @@ public class MainActivity extends BaseActivity {
         startActivity(intent);
         this.finish();
     }
-
+ 
     @Override
     protected int getContentView() {
         return R.layout.activity_main;

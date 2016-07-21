@@ -16,9 +16,7 @@ import com.example.jly.passwordmanager.utils.LockPatternUtils;
 
 import java.util.List;
 
-/**
- * Created by jly on 16-7-20.
- */
+
 public class CheckLockActivityImpl implements ActivityPresenter {
     private Context mContext;
     private ActivityCheckLockBinding mBinding;

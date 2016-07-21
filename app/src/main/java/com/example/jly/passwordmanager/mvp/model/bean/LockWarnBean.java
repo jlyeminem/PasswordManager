@@ -1,8 +1,6 @@
 package com.example.jly.passwordmanager.mvp.model.bean;
 
-/**
- * Created by jly on 16-7-15.
- */
+
 public class LockWarnBean {
     private String mLockWarn;
     private int mColor;
