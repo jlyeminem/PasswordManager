@@ -10,7 +10,7 @@ import com.example.jly.passwordmanager.mvp.model.Constants;
 import com.example.jly.passwordmanager.utils.SPUtils;
 
 
-public class MainActivity extends BaseActivity {
+public class WelcomeActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
