@@ -12,6 +12,8 @@ import com.example.jly.passwordmanager.mvp.model.bean.LockWarnBean;
 import com.example.jly.passwordmanager.mvp.presenter.ActivityPresenter;
 import com.example.jly.passwordmanager.mvp.view.LockPatternView;
 import com.example.jly.passwordmanager.mvp.view.LockView;
+import com.example.jly.passwordmanager.mvp.view.activity.CheckLockActivity;
+import com.example.jly.passwordmanager.mvp.view.activity.MainActivity;
 import com.example.jly.passwordmanager.utils.LockPatternUtils;
 
 import java.util.List;
@@ -70,7 +72,9 @@ public class CheckLockActivityImpl implements ActivityPresenter {
         if (pattern == null) return;
         LockPatternUtils lockPatternUtils = LockPatternUtils.getInstances(mContext);
         if (lockPatternUtils.checkPattern(pattern)) {
-            Log.d("here","1111");
+            Intent intent = new Intent(mContext, MainActivity.class);
+            mContext.startActivity(intent);
+            ((CheckLockActivity) mContext).finish();
         } else {
             mLockWarn = new LockWarnBean(mContext.getString(R.string.wrong_password),Color.RED);
             mBinding.setLockWarn(mLockWarn);

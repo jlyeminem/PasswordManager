@@ -11,6 +11,8 @@ import com.example.jly.passwordmanager.mvp.model.bean.LockWarnBean;
 import com.example.jly.passwordmanager.mvp.presenter.ActivityPresenter;
 import com.example.jly.passwordmanager.mvp.view.LockView;
 import com.example.jly.passwordmanager.mvp.view.LockPatternView;
+import com.example.jly.passwordmanager.mvp.view.activity.CreateLockActivity;
+import com.example.jly.passwordmanager.mvp.view.activity.MainActivity;
 import com.example.jly.passwordmanager.utils.LockPatternUtils;
 import com.example.jly.passwordmanager.utils.SPUtils;
 
@@ -117,6 +119,9 @@ public class CreateLockActivityImpl implements ActivityPresenter {
                 if (lockPatternUtils.checkPattern(pattern)) {
                     fingerAllDone();
                     SPUtils.put(mContext, Constants.CREATE_LOCK_SUCCESS,true);
+                    Intent intent =new Intent(mContext, MainActivity.class);
+                    mContext.startActivity(intent);
+                    ((CreateLockActivity) mContext).finish();
                 } else {
                     fingerSecondError();
                     mLockView.lockErrorShow();
