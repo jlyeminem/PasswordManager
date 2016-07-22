@@ -7,6 +7,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.TypedValue;
 import android.view.KeyEvent;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 
@@ -15,11 +16,13 @@ import com.example.jly.passwordmanager.R;
 import com.example.jly.passwordmanager.databinding.ActivityMainBinding;
 import com.example.jly.passwordmanager.mvp.presenter.impl.MainActivityImpl;
 import com.example.jly.passwordmanager.mvp.view.MainView;
+import com.example.jly.passwordmanager.mvp.view.adapter.ContentApapter;
+import com.example.jly.passwordmanager.utils.ShowToast;
 
 
 public class MainActivity extends BaseActivity implements MainView {
     private ActivityMainBinding mBinding;
-    private ActionBarDrawerToggle mActionBarDrawerToggle;
+
     private MainActivityImpl mActivity;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,8 +44,24 @@ public class MainActivity extends BaseActivity implements MainView {
     }
 
     @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.about:
+                ShowToast.Short("This is about");
+                return true;
+            case R.id.setting:
+                ShowToast.Short("This is setting");
+                return true;
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
     public void initDrawerToggle() {
-        mActionBarDrawerToggle = new ActionBarDrawerToggle(this, mBinding.drawerlayout, mBinding.commonToolbar, 0, 0){
+        ActionBarDrawerToggle mActionBarDrawerToggle = new ActionBarDrawerToggle(this, mBinding.drawerlayout, mBinding.commonToolbar, 0, 0){
             @Override public void onDrawerClosed(View drawerView) {
                 super.onDrawerClosed(drawerView);
                 invalidateOptionsMenu();
@@ -59,7 +78,9 @@ public class MainActivity extends BaseActivity implements MainView {
 
     @Override
     public void initXViewPager() {
-
+        mBinding.content.setOffscreenPageLimit(4);
+        ContentApapter contentApapter = new ContentApapter(getSupportFragmentManager());
+        mBinding.content.setAdapter(contentApapter);
     }
 
     @Override
