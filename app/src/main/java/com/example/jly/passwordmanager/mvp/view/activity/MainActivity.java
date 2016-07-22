@@ -73,7 +73,7 @@ public class MainActivity extends BaseActivity implements MainView {
         };
         mActionBarDrawerToggle.syncState();//使得箭头和三道杠图案和抽屉拉合保持同步
         mActionBarDrawerToggle.setDrawerIndicatorEnabled(true);
-        mBinding.drawerlayout.setDrawerListener(mActionBarDrawerToggle);
+        mBinding.drawerlayout.addDrawerListener(mActionBarDrawerToggle);
     }
 
     @Override
