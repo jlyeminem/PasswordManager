@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.util.TypedValue;
+import android.view.KeyEvent;
 import android.view.View;
 
 
@@ -85,5 +86,10 @@ public class MainActivity extends BaseActivity implements MainView {
     @Override
     public void showSnackBar(String msg) {
 
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        return mActivity.onKeyDown(keyCode,event) || super.onKeyDown(keyCode,event);
     }
 }

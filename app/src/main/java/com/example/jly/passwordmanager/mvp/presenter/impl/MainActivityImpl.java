@@ -4,18 +4,23 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 
 import com.example.jly.passwordmanager.R;
 import com.example.jly.passwordmanager.databinding.ActivityMainBinding;
 import com.example.jly.passwordmanager.mvp.presenter.ActivityPresenter;
 import com.example.jly.passwordmanager.mvp.view.MainView;
+import com.example.jly.passwordmanager.mvp.view.activity.MainActivity;
+import com.example.jly.passwordmanager.utils.ShowToast;
 
 
 public class MainActivityImpl implements ActivityPresenter,NavigationView.OnNavigationItemSelectedListener {
     private ActivityMainBinding mBinding;
     private Context mContext;
     private MainView mMainView;
+    private long exitTime;
 
     public MainActivityImpl(ActivityMainBinding binding, Context context, MainView mainView) {
         mBinding = binding;
@@ -67,7 +72,42 @@ public class MainActivityImpl implements ActivityPresenter,NavigationView.OnNavi
         switch (menuItem.getItemId()) {
             case R.id.nav_default_type:
                 mBinding.drawerlayout.closeDrawers();
+                ShowToast.Short("This is the nav_default_type");
+                break;
+            case R.id.nav_game_type:
+                mBinding.drawerlayout.closeDrawers();
+                ShowToast.Short("This is the nav_game_type");
+                break;
+            case R.id.nav_mail_type:
+                mBinding.drawerlayout.closeDrawers();
+                ShowToast.Short("This is the nav_mail_type");
+                break;
+            case R.id.nav_note_type:
+                mBinding.drawerlayout.closeDrawers();
+                ShowToast.Short("This is the nav_note_type");
+                break;
+            case R.id.nav_setting:
+                mBinding.drawerlayout.closeDrawers();
+                ShowToast.Short("This is the setting");
+                break;
+            default:break;
+        }
+        return true;
+    }
 
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
+            if (mBinding.drawerlayout.isDrawerOpen(GravityCompat.START)) {
+                mBinding.drawerlayout.closeDrawer(GravityCompat.START);
+                return true;
+            }
+            if ((System.currentTimeMillis() - exitTime) > 2000) {
+                ShowToast.Short("再按一次退出程序");
+                exitTime = System.currentTimeMillis();
+            } else {
+                ((MainActivity)mContext).finish();
+            }
+            return true;
         }
         return false;
     }
