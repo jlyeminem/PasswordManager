@@ -64,6 +64,11 @@ public class MainActivityImpl implements ActivityPresenter,NavigationView.OnNavi
 
     @Override
     public boolean onNavigationItemSelected(MenuItem menuItem) {
+        switch (menuItem.getItemId()) {
+            case R.id.nav_default_type:
+                mBinding.drawerlayout.closeDrawers();
+
+        }
         return false;
     }
 }
