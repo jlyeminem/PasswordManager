@@ -16,7 +16,7 @@ import com.example.jly.passwordmanager.R;
 import com.example.jly.passwordmanager.databinding.ActivityMainBinding;
 import com.example.jly.passwordmanager.mvp.presenter.impl.MainActivityImpl;
 import com.example.jly.passwordmanager.mvp.view.MainView;
-import com.example.jly.passwordmanager.mvp.view.adapter.ContentApapter;
+import com.example.jly.passwordmanager.mvp.view.adapter.ContentIndexAdapter;
 import com.example.jly.passwordmanager.utils.ShowToast;
 
 
@@ -79,8 +79,8 @@ public class MainActivity extends BaseActivity implements MainView {
     @Override
     public void initXViewPager() {
         mBinding.content.setOffscreenPageLimit(4);
-        ContentApapter contentApapter = new ContentApapter(getSupportFragmentManager());
-        mBinding.content.setAdapter(contentApapter);
+        ContentIndexAdapter contentIndexAdapter = new ContentIndexAdapter(getSupportFragmentManager());
+        mBinding.content.setAdapter(contentIndexAdapter);
     }
 
     @Override

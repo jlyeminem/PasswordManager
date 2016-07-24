@@ -9,9 +9,9 @@ import com.example.jly.passwordmanager.mvp.view.fragment.ContentFragment;
 /**
  * Created by jly on 16-7-22.
  */
-public class ContentApapter extends FragmentPagerAdapter {
+public class ContentIndexAdapter extends FragmentPagerAdapter {
 
-    public ContentApapter(FragmentManager fm) {
+    public ContentIndexAdapter(FragmentManager fm) {
         super(fm);
     }
 
