@@ -30,7 +30,7 @@ public class RealmHelper {
         return instance;
     }
 
-    public static ArrayList<Password> getPasswords (Context context,int pwType) {
+    public ArrayList<Password> getPasswords (Context context,int pwType) {
         Realm realm = Realm.getInstance(context);
         RealmQuery<Password> realmQuery = realm.where(Password.class);
         RealmQuery<Password> pwRealmQuerr = realmQuery.equalTo("pwType",pwType);
@@ -46,14 +46,14 @@ public class RealmHelper {
         return null;
     }
 
-    public static void addPassword (Context context, Password pw) {
+    public void addPassword (Context context, Password pw) {
         Realm realm = Realm.getInstance(context);
         realm.beginTransaction();
         realm.copyToRealm(pw);
         realm.commitTransaction();
     }
 
-    public static void deletePassword (Context context,Password pw,int position) {
+    public void deletePassword (Context context,Password pw,int position) {
         Realm realm = Realm.getInstance(context);
         RealmQuery<Password> realmQuery = realm.where(Password.class);
         RealmQuery<Password> pwRealmQuery = realmQuery.equalTo("pwType",pw.getPwType());
