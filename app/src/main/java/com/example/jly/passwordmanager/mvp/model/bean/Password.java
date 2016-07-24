@@ -1,10 +1,12 @@
 package com.example.jly.passwordmanager.mvp.model.bean;
 
-/**
- * Created by jly on 16-7-24.
- */
-public class Password {
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
+
+
+public class Password extends RealmObject{
     private int pwType;
+    @PrimaryKey
     private String title;
     private String userName;
     private String password;
