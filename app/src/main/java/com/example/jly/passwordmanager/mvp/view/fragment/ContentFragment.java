@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.example.jly.passwordmanager.R;
+import com.example.jly.passwordmanager.mvp.presenter.impl.ContentFragmentImpl;
 import com.example.jly.passwordmanager.mvp.view.ContentView;
 
 import butterknife.BindView;
@@ -26,12 +27,15 @@ public class ContentFragment extends Fragment implements ContentView{
     LinearLayout mException;
 
     private Activity mActivity;
+    private ContentFragmentImpl mContentFragment;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_content, container, false);
         ButterKnife.bind(this, view);
+        mContentFragment = new ContentFragmentImpl(this,getContext());
+        mContentFragment.getArgus(getArguments());
         return view;
     }
 
@@ -39,6 +43,13 @@ public class ContentFragment extends Fragment implements ContentView{
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mActivity = getActivity();
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        mContentFragment.onFirstUserVisible();
+
     }
 
     @Override

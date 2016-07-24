@@ -1,5 +1,6 @@
 package com.example.jly.passwordmanager.mvp.view.adapter;
 
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -16,8 +17,11 @@ public class ContentIndexAdapter extends FragmentPagerAdapter {
     }
 
     @Override
-    public Fragment getItem(int position) {
+    public Fragment getItem(int index) {
         Fragment fragment = new ContentFragment();
+        Bundle argus = new Bundle();
+        argus.putInt("index", index);
+        fragment.setArguments(argus);
         return fragment;
     }
 
