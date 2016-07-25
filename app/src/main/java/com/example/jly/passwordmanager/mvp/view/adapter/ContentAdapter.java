@@ -3,7 +3,6 @@ package com.example.jly.passwordmanager.mvp.view.adapter;
 import android.content.Context;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +14,6 @@ import com.example.jly.passwordmanager.R;
 import com.example.jly.passwordmanager.mvp.model.bean.Password;
 import com.example.jly.passwordmanager.utils.TimeUtils;
 
-import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;

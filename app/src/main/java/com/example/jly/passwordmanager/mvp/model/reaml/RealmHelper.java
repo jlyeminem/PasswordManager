@@ -46,11 +46,36 @@ public class RealmHelper {
         return null;
     }
 
-    public void addPassword (Context context, Password pw) {
+    public boolean addPassword (Context context,Password password) {
+        if(check(context,password)) {
+            return true;
+        }
+        Realm realm = Realm.getInstance(context);
+        realm.beginTransaction();
+        realm.copyToRealm(password);
+        realm.commitTransaction();
+        return false;
+    }
+
+    private boolean check(Context context, Password password) {
+        int type = password.getPwType();
+        Realm realm = Realm.getInstance(context);
+        RealmQuery<Password> realmQuery = realm.where(Password.class);
+        RealmQuery<Password> realmQueryPassword = realmQuery.equalTo("type",type);
+        RealmResults<Password> title = realmQueryPassword.contains("title",password.getTitle()).findAll();
+        if(title != null && title.size() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean updatePassword (Context context, Password pw) {
         Realm realm = Realm.getInstance(context);
         realm.beginTransaction();
         realm.copyToRealm(pw);
         realm.commitTransaction();
+        return true;
     }
 
     public void deletePassword (Context context,Password pw,int position) {
