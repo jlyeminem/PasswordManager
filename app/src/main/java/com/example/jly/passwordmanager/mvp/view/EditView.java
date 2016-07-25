@@ -1,15 +1,15 @@
 package com.example.jly.passwordmanager.mvp.view;
 
+import android.support.v7.widget.Toolbar;
+
 import com.example.jly.passwordmanager.mvp.model.bean.Password;
 
 import java.util.List;
 
 import me.imid.swipebacklayout.lib.SwipeBackLayout;
 
-/**
- * Created by Clearlove on 16/1/17.
- */
-public interface EditAView {
+
+public interface EditView {
 
     void initSpinner(List<String> data);
     void initCreateModel();
@@ -29,4 +29,5 @@ public interface EditAView {
     void showDialog(String msg, String positiveMsg);
     void hideSaveDialog();
     SwipeBackLayout getSwipeBack();
+    void initToolbar(Toolbar toolbar);
 }
