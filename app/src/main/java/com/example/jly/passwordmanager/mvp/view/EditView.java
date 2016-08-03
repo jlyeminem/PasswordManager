@@ -29,5 +29,4 @@ public interface EditView {
     void showDialog(String msg, String positiveMsg);
     void hideSaveDialog();
     SwipeBackLayout getSwipeBack();
-    void initToolbar(Toolbar toolbar);
 }

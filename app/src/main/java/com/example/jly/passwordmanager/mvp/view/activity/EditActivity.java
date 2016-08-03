@@ -3,7 +3,6 @@ package com.example.jly.passwordmanager.mvp.view.activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.text.method.HideReturnsTransformationMethod;
@@ -28,10 +27,13 @@ import com.rengwuxian.materialedittext.MaterialEditText;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import me.imid.swipebacklayout.lib.SwipeBackLayout;
 
 
 public class EditActivity extends BaseSwipeBackActivity implements EditView {
+
+    private static final int SUCCESS = 1;
 
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
@@ -61,8 +63,11 @@ public class EditActivity extends BaseSwipeBackActivity implements EditView {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ButterKnife.bind(this);
+        initToolbar(mToolbar);
         mEditImpl = new EditActivityImpl(this,this);
         mEditImpl.onCreate(savedInstanceState);
+        mEditImpl.getIntent(getIntent());
         mEye.setOnCheckedChangeListener(mEditImpl);
     }
 
@@ -81,7 +86,7 @@ public class EditActivity extends BaseSwipeBackActivity implements EditView {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        return super.onOptionsItemSelected(item);
+        return mEditImpl.onOptionItemSelected(item) || super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -174,11 +179,13 @@ public class EditActivity extends BaseSwipeBackActivity implements EditView {
 
     @Override
     public void setItemMenuVisible(boolean visible) {
-        menuItem.setVisible(visible);
+        if (null != menuItem)
+            menuItem.setVisible(visible);
     }
 
     @Override
     public void finishActivity() {
+        setResult(SUCCESS);
         finish();
     }
 
@@ -225,10 +232,9 @@ public class EditActivity extends BaseSwipeBackActivity implements EditView {
 
     @Override
     public SwipeBackLayout getSwipeBack() {
-        return getSwipeBack();
+        return getSwipeBackLayout();
     }
 
-    @Override
     public void initToolbar(Toolbar toolbar) {
         if (toolbar == null) return;
         toolbar.setBackgroundColor(getColorPrimary());
@@ -245,4 +251,6 @@ public class EditActivity extends BaseSwipeBackActivity implements EditView {
         getTheme().resolveAttribute(R.attr.colorPrimary, typedValue, true);
         return typedValue.data;
     }
+
+
 }

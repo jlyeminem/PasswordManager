@@ -14,10 +14,15 @@ import android.view.View;
 
 import com.example.jly.passwordmanager.R;
 import com.example.jly.passwordmanager.databinding.ActivityMainBinding;
+import com.example.jly.passwordmanager.mvp.model.Constants;
+import com.example.jly.passwordmanager.mvp.model.evenbus.EventCenter;
 import com.example.jly.passwordmanager.mvp.presenter.impl.MainActivityImpl;
 import com.example.jly.passwordmanager.mvp.view.MainView;
 import com.example.jly.passwordmanager.mvp.view.adapter.ContentIndexAdapter;
 import com.example.jly.passwordmanager.utils.ShowToast;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 
 public class MainActivity extends BaseActivity implements MainView {
@@ -119,5 +124,11 @@ public class MainActivity extends BaseActivity implements MainView {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         return mActivity.onKeyDown(keyCode,event) || super.onKeyDown(keyCode,event);
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 }

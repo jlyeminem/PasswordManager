@@ -24,6 +24,7 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.ViewHold
 
     private List<Password> mPasswords;
     private Context mContext;
+    private OnRecyclerItemClickListener mOnRecyclerItemClickListener;
 
     public ContentAdapter(List<Password> passwords, Context context) {
         mPasswords = passwords;
@@ -37,7 +38,7 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.ViewHold
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, final int position) {
         final Password password = mPasswords.get(position);
         if (password != null) {
             holder.mItemDate.setText(TimeUtils.getConciseTime(password.getTime(),mContext));
@@ -48,7 +49,30 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.ViewHold
                 holder.mItemNoteContainer.setVisibility(View.VISIBLE);
                 holder.mMemoInfo.setText(password.getPwInfo());
             }
+            holder.mCardView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mOnRecyclerItemClickListener.onRecycleItemClick(view,position);
+                }
+            });
         }
+    }
+
+    public void addAll(List<Password> passwords) {
+        mPasswords.clear();
+        mPasswords.addAll(passwords);
+    }
+
+    public void clearData() {
+        mPasswords.clear();
+    }
+
+    public interface OnRecyclerItemClickListener {
+        void onRecycleItemClick(View view,int position);
+    }
+
+    public void setOnRecyclerItemClickListener(OnRecyclerItemClickListener onRecyclerItemClickListener) {
+        mOnRecyclerItemClickListener = onRecyclerItemClickListener;
     }
 
     @Override
