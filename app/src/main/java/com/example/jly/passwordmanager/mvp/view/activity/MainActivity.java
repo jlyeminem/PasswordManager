@@ -1,5 +1,6 @@
 package com.example.jly.passwordmanager.mvp.view.activity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -26,9 +27,13 @@ import org.greenrobot.eventbus.Subscribe;
 
 
 public class MainActivity extends BaseActivity implements MainView {
+    private static final int MAIN_REQUEST_CODE = 1;
+    private static final int SETTING_REQUEST_CODE = 2;
+    private static final int EDIT_SAVE = 1;
     private ActivityMainBinding mBinding;
 
     private MainActivityImpl mActivity;
+    private int MAIN_EVENT_SUCCESS = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -108,7 +113,22 @@ public class MainActivity extends BaseActivity implements MainView {
 
     @Override
     public void readyGoForResult(Class clazz) {
+        Intent intent = new Intent(this,clazz);
+        intent.putExtra(EditActivity.CREATE_MODE,Constants.ADDMODE);
+        startActivityForResult(intent,MAIN_REQUEST_CODE);
+    }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == MAIN_REQUEST_CODE) {
+            if (resultCode == EDIT_SAVE) {
+                EventCenter eventCenter = new EventCenter(MAIN_EVENT_SUCCESS, true);
+                EventBus.getDefault().post(eventCenter);
+            }
+        } else if (requestCode == SETTING_REQUEST_CODE) {
+
+        }
     }
 
     @Override

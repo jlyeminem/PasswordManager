@@ -8,6 +8,10 @@
         <item name="android:windowIsTranslucent">true</item>
     </style>
 
+    <style name="ActivityNoTranslucent">
+        <item name="android:windowIsTranslucent">false</item>
+    </style>
+
     <style name="AppTheme.blue" parent="AppTheme.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>

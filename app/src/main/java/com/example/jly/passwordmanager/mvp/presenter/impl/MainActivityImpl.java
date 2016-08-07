@@ -3,6 +3,7 @@ package com.example.jly.passwordmanager.mvp.presenter.impl;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.view.KeyEvent;
@@ -12,8 +13,14 @@ import com.example.jly.passwordmanager.R;
 import com.example.jly.passwordmanager.databinding.ActivityMainBinding;
 import com.example.jly.passwordmanager.mvp.presenter.ActivityPresenter;
 import com.example.jly.passwordmanager.mvp.view.MainView;
+import com.example.jly.passwordmanager.mvp.view.activity.EditActivity;
 import com.example.jly.passwordmanager.mvp.view.activity.MainActivity;
 import com.example.jly.passwordmanager.utils.ShowToast;
+import com.jakewharton.rxbinding.view.RxView;
+
+import java.util.concurrent.TimeUnit;
+
+import rx.functions.Action1;
 
 
 public class MainActivityImpl implements ActivityPresenter,NavigationView.OnNavigationItemSelectedListener {
@@ -33,6 +40,15 @@ public class MainActivityImpl implements ActivityPresenter,NavigationView.OnNavi
         mMainView.initToolBar(mBinding.commonToolbar);
         mMainView.initDrawerToggle();
         mMainView.initXViewPager();
+        FloatingActionButton fab = mBinding.fab;
+        RxView.clicks(fab).throttleFirst(500, TimeUnit.MILLISECONDS).subscribe(
+                new Action1<Void>() {
+                    @Override
+                    public void call(Void aVoid) {
+                        mMainView.readyGoForResult(EditActivity.class);
+                    }
+                }
+        );
         mBinding.navigationView.setCheckedItem(R.id.nav_default_type);
         mBinding.navigationView.setNavigationItemSelectedListener(this);
     }

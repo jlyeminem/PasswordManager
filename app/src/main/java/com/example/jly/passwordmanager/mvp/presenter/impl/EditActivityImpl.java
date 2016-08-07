@@ -18,6 +18,7 @@ import com.example.jly.passwordmanager.mvp.model.bean.Password;
 import com.example.jly.passwordmanager.mvp.model.reaml.RealmManager;
 import com.example.jly.passwordmanager.mvp.presenter.ActivityPresenter;
 import com.example.jly.passwordmanager.mvp.view.EditView;
+import com.example.jly.passwordmanager.mvp.view.activity.EditActivity;
 import com.example.jly.passwordmanager.utils.TimeUtils;
 
 import java.util.ArrayList;
@@ -57,7 +58,7 @@ public class EditActivityImpl implements ActivityPresenter,
 
     @Override
     public void getIntent(Intent intent) {
-        createMode = intent.getIntExtra("CREATE_MODE", 1);
+        createMode = intent.getIntExtra(EditActivity.CREATE_MODE, 1);
         switch (createMode) {
             case 0://查看
                 position = intent.getIntExtra("position",0);
@@ -69,6 +70,9 @@ public class EditActivityImpl implements ActivityPresenter,
                 mEditView.setToolBarTitle(R.string.view_mode);
                 mEditView.setTime(TimeUtils.getTime(mPassword.getTime()));
                 isEdit = false;
+                break;
+            case 1://添加
+                mEditView.initCreateModel();
                 break;
         }
     }
@@ -114,7 +118,7 @@ public class EditActivityImpl implements ActivityPresenter,
         }
     }
 
-    private boolean comeBack() {
+    public boolean comeBack() {
         if (isEdit) {
             String userName = mEditView.getUserName();
             String passWord = mEditView.getPassWord();

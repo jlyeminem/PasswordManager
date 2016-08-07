@@ -7,9 +7,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 import com.example.jly.passwordmanager.mvp.view.fragment.ContentFragment;
 
-/**
- * Created by jly on 16-7-22.
- */
+
 public class ContentIndexAdapter extends FragmentPagerAdapter {
 
     public ContentIndexAdapter(FragmentManager fm) {

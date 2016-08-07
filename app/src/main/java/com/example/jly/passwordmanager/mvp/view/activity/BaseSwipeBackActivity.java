@@ -3,6 +3,7 @@ package com.example.jly.passwordmanager.mvp.view.activity;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 
 import me.imid.swipebacklayout.lib.SwipeBackLayout;
@@ -18,6 +19,21 @@ public abstract class BaseSwipeBackActivity extends BaseActivity implements Swip
         mDataBinding = DataBindingUtil.setContentView(this, getContentView());
         mHelper = new SwipeBackActivityHelper(this);
         mHelper.onActivityCreate();
+    }
+
+    @Override protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        mHelper.onPostCreate();
+    }
+
+    @Override public boolean onOptionsItemSelected(MenuItem item) {
+
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+            return true;
+        } else {
+            return super.onOptionsItemSelected(item);
+        }
     }
 
     @Override public View findViewById(int id) {

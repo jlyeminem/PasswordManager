@@ -10,6 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.blue">
         <activity android:name=".mvp.view.activity.WelcomeActivity"
+                  android:launchMode="singleTop"
                   android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -19,7 +20,9 @@
         </activity>
         <activity android:name=".mvp.view.activity.CheckLockActivity"/>
         <activity android:name=".mvp.view.activity.CreateLockActivity"/>
-        <activity android:name=".mvp.view.activity.MainActivity"/>
+        <activity android:name=".mvp.view.activity.MainActivity"
+                  android:launchMode="singleTop"
+                  android:screenOrientation="portrait"/>
         <activity android:name=".mvp.view.activity.EditActivity"/>
     </application>
 

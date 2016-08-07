@@ -29,7 +29,7 @@ import butterknife.ButterKnife;
 
 public class ContentFragment extends Fragment implements ContentView{
 
-    private static final int INDEX_FRAGMENT_REQUEST_CODE = 2;
+    private static final int CONTENT_FRAGMENT_REQUEST_CODE = 2;
     private static final int EDIT_SAVE = 1;
     private static final int SUCCESS = 1;
 
@@ -78,16 +78,16 @@ public class ContentFragment extends Fragment implements ContentView{
     @Override
     public void readGo(Class clazz, int type, int position, int positionType) {
         Intent intent = new Intent(mActivity, EditActivity.class);
-        intent.putExtra("CREATE_MODE", Constants.VIEWMODE);
+        intent.putExtra(EditActivity.CREATE_MODE, Constants.VIEWMODE);
         intent.putExtra("position", position);
         intent.putExtra("positionType", positionType);
-        startActivityForResult(intent, INDEX_FRAGMENT_REQUEST_CODE);
+        startActivityForResult(intent, CONTENT_FRAGMENT_REQUEST_CODE);
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == INDEX_FRAGMENT_REQUEST_CODE) {
+        if (requestCode == CONTENT_FRAGMENT_REQUEST_CODE) {
             if (resultCode == EDIT_SAVE ) {
                 EventCenter eventCenter = new EventCenter(INDEX_EVENT_SUCCESS, true);
                 EventBus.getDefault().post(eventCenter);

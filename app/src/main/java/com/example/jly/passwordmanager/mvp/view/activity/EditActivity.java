@@ -7,6 +7,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -34,6 +35,7 @@ import me.imid.swipebacklayout.lib.SwipeBackLayout;
 public class EditActivity extends BaseSwipeBackActivity implements EditView {
 
     private static final int SUCCESS = 1;
+    public static String CREATE_MODE = "CREATE_MODE";
 
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
@@ -69,6 +71,7 @@ public class EditActivity extends BaseSwipeBackActivity implements EditView {
         mEditImpl.onCreate(savedInstanceState);
         mEditImpl.getIntent(getIntent());
         mEye.setOnCheckedChangeListener(mEditImpl);
+
     }
 
     @Override
@@ -106,7 +109,6 @@ public class EditActivity extends BaseSwipeBackActivity implements EditView {
         mTitleEditText.requestFocus();
         showKeyBoard();
         addEdtChangeListener();
-
     }
 
     private void showKeyBoard() {
@@ -168,7 +170,8 @@ public class EditActivity extends BaseSwipeBackActivity implements EditView {
     @Override
     public void setTime(String time) {
         mTimeTextView.setVisibility(View.VISIBLE);
-        mTimeTextView.setText("创建于："+ time);
+        String text = "创建于："+ time;
+        mTimeTextView.setText(text);
     }
 
     @Override
@@ -233,6 +236,11 @@ public class EditActivity extends BaseSwipeBackActivity implements EditView {
     @Override
     public SwipeBackLayout getSwipeBack() {
         return getSwipeBackLayout();
+    }
+
+    @Override
+    public void onBackPressed() {
+        mEditImpl.comeBack();
     }
 
     public void initToolbar(Toolbar toolbar) {

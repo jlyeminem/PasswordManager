@@ -155,6 +155,15 @@
                 tools:text="创建于2016.01.01 00:00"/>
         </LinearLayout>
     </android.support.v7.widget.CardView>
+    <com.balysv.materialripple.MaterialRippleLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        app:mrl_rippleOverlay="true"
+        app:mrl_rippleColor="?attr/colorPrimary"
+        >
+
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -163,4 +172,5 @@
             android:visibility="gone"
             android:textColor="@android:color/white"
             android:background="@drawable/delete_button_background"/>
+    </com.balysv.materialripple.MaterialRippleLayout>
 </LinearLayout>
