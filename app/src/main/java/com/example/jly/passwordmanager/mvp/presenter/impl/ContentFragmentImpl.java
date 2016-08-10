@@ -3,6 +3,7 @@ package com.example.jly.passwordmanager.mvp.presenter.impl;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
+import android.util.Log;
 import android.view.View;
 
 import com.example.jly.passwordmanager.mvp.model.Constants;

@@ -85,22 +85,30 @@ public class MainActivityImpl implements ActivityPresenter,NavigationView.OnNavi
 
     @Override
     public boolean onNavigationItemSelected(MenuItem menuItem) {
+        int currentSelectedItem = 0;
         switch (menuItem.getItemId()) {
             case R.id.nav_default_type:
                 mBinding.drawerlayout.closeDrawers();
-                ShowToast.Short("This is the nav_default_type");
+                mBinding.content.setCurrentItem(currentSelectedItem);
+                //ShowToast.Short("This is the nav_default_type");
                 break;
             case R.id.nav_game_type:
+                currentSelectedItem = 1;
                 mBinding.drawerlayout.closeDrawers();
-                ShowToast.Short("This is the nav_game_type");
+                mBinding.content.setCurrentItem(currentSelectedItem);
+                //ShowToast.Short("This is the nav_game_type");
                 break;
             case R.id.nav_mail_type:
+                currentSelectedItem = 2;
                 mBinding.drawerlayout.closeDrawers();
-                ShowToast.Short("This is the nav_mail_type");
+                mBinding.content.setCurrentItem(currentSelectedItem);
+                //ShowToast.Short("This is the nav_mail_type");
                 break;
             case R.id.nav_note_type:
+                currentSelectedItem = 3;
                 mBinding.drawerlayout.closeDrawers();
-                ShowToast.Short("This is the nav_note_type");
+                mBinding.content.setCurrentItem(currentSelectedItem);
+                //ShowToast.Short("This is the nav_note_type");
                 break;
             case R.id.nav_setting:
                 mBinding.drawerlayout.closeDrawers();

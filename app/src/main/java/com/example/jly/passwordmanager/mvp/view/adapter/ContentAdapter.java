@@ -14,6 +14,7 @@ import com.example.jly.passwordmanager.R;
 import com.example.jly.passwordmanager.mvp.model.bean.Password;
 import com.example.jly.passwordmanager.utils.TimeUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -22,7 +23,7 @@ import butterknife.ButterKnife;
 
 public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.ViewHolder> {
 
-    private List<Password> mPasswords;
+    private List<Password> mPasswords = new ArrayList<>();
     private Context mContext;
     private OnRecyclerItemClickListener mOnRecyclerItemClickListener;
 
@@ -59,12 +60,18 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.ViewHold
     }
 
     public void addAll(List<Password> passwords) {
-        mPasswords.clear();
-        mPasswords.addAll(passwords);
+        if(null != mPasswords) {
+            mPasswords.clear();
+            mPasswords.addAll(passwords);
+        } else {
+            mPasswords = new ArrayList<>();
+            mPasswords.addAll(passwords);
+        }
     }
 
     public void clearData() {
-        mPasswords.clear();
+        if (null != mPasswords)
+            mPasswords.clear();
     }
 
     public interface OnRecyclerItemClickListener {
