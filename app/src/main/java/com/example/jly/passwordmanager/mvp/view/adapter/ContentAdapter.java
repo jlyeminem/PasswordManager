@@ -1,6 +1,7 @@
 package com.example.jly.passwordmanager.mvp.view.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,7 +12,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.jly.passwordmanager.R;
+import com.example.jly.passwordmanager.mvp.model.Constants;
 import com.example.jly.passwordmanager.mvp.model.bean.Password;
+import com.example.jly.passwordmanager.mvp.view.activity.SettingActivity;
+import com.example.jly.passwordmanager.utils.SPUtils;
 import com.example.jly.passwordmanager.utils.TimeUtils;
 
 import java.util.ArrayList;
@@ -26,6 +30,7 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.ViewHold
     private List<Password> mPasswords = new ArrayList<>();
     private Context mContext;
     private OnRecyclerItemClickListener mOnRecyclerItemClickListener;
+    private boolean isOpen;
 
     public ContentAdapter(List<Password> passwords, Context context) {
         mPasswords = passwords;
@@ -45,7 +50,11 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.ViewHold
             holder.mItemDate.setText(TimeUtils.getConciseTime(password.getTime(),mContext));
             holder.mItemTitle.setText(password.getTitle());
             holder.mItemName.setText(password.getUserName());
-            holder.mItemPassword.setText(password.getPassword());
+            if(isOpen) {
+                holder.mItemPassword.setText(password.getPassword());
+            } else {
+                holder.mItemPassword.setText("********");
+            }
             if(password.getPwInfo() != null && !password.getPwInfo().equals("")) {
                 holder.mItemNoteContainer.setVisibility(View.VISIBLE);
                 holder.mMemoInfo.setText(password.getPwInfo());
@@ -84,6 +93,7 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.ViewHold
 
     @Override
     public int getItemCount() {
+        isOpen = (boolean) SPUtils.get(mContext, Constants.SETTING.OPEN_PASS_WORD_SHOW, true);
         return mPasswords != null ? mPasswords.size() : 0;
     }
 

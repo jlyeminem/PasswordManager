@@ -40,4 +40,5 @@ dependencies {
     compile 'com.balysv:material-ripple:1.0.2'
     compile 'org.greenrobot:eventbus:3.0.0'
     compile 'com.jakewharton.rxbinding:rxbinding:0.3.0'
+    compile 'com.jenzz:materialpreference:1.3'
 }

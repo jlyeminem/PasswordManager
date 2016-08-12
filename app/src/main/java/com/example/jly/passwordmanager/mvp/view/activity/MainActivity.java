@@ -60,7 +60,7 @@ public class MainActivity extends BaseActivity implements MainView {
                 ShowToast.Short("This is about");
                 return true;
             case R.id.setting:
-                ShowToast.Short("This is setting");
+                go2Setting();
                 return true;
             case android.R.id.home:
                 onBackPressed();
@@ -133,7 +133,8 @@ public class MainActivity extends BaseActivity implements MainView {
 
     @Override
     public void go2Setting() {
-
+        Intent intent = new Intent(this, SettingActivity.class);
+        startActivityForResult(intent, SETTING_REQUEST_CODE);
     }
 
     @Override

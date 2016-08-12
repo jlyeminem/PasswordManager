@@ -30,7 +30,12 @@ public class WelcomeActivity extends BaseActivity {
         if (!isSuccess) {
             intent = new Intent(this,CreateLockActivity.class);
         } else {
-            intent = new Intent(this, CheckLockActivity.class);
+            boolean isOpen = (boolean) SPUtils.get(this,Constants.SETTING.OPEN_GESTURE,true);
+            if (isOpen) {
+                intent = new Intent(this,CheckLockActivity.class);
+            } else {
+                intent = new Intent(this,MainActivity.class);
+            }
         }
         startActivity(intent);
         this.finish();

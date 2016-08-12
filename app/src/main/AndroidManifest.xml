@@ -24,6 +24,9 @@
                   android:launchMode="singleTop"
                   android:screenOrientation="portrait"/>
         <activity android:name=".mvp.view.activity.EditActivity"/>
+        <activity android:name=".mvp.view.activity.SettingActivity"
+                  android:launchMode="singleTop"
+                  android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

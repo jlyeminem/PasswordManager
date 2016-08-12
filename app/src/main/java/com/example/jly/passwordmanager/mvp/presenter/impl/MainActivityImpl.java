@@ -90,29 +90,25 @@ public class MainActivityImpl implements ActivityPresenter,NavigationView.OnNavi
             case R.id.nav_default_type:
                 mBinding.drawerlayout.closeDrawers();
                 mBinding.content.setCurrentItem(currentSelectedItem);
-                //ShowToast.Short("This is the nav_default_type");
                 break;
             case R.id.nav_game_type:
                 currentSelectedItem = 1;
                 mBinding.drawerlayout.closeDrawers();
                 mBinding.content.setCurrentItem(currentSelectedItem);
-                //ShowToast.Short("This is the nav_game_type");
                 break;
             case R.id.nav_mail_type:
                 currentSelectedItem = 2;
                 mBinding.drawerlayout.closeDrawers();
                 mBinding.content.setCurrentItem(currentSelectedItem);
-                //ShowToast.Short("This is the nav_mail_type");
                 break;
             case R.id.nav_note_type:
                 currentSelectedItem = 3;
                 mBinding.drawerlayout.closeDrawers();
                 mBinding.content.setCurrentItem(currentSelectedItem);
-                //ShowToast.Short("This is the nav_note_type");
                 break;
             case R.id.nav_setting:
                 mBinding.drawerlayout.closeDrawers();
-                ShowToast.Short("This is the setting");
+                mMainView.go2Setting();
                 break;
             default:break;
         }
