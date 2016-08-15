@@ -9,7 +9,5 @@ public interface LockView {
 
     void lockErrorShow();
 
-    void setResults(int isSuccess);
-
     void clearPattern();
 }

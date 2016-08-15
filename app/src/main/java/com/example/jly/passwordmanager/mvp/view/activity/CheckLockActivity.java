@@ -45,10 +45,6 @@ public class CheckLockActivity extends BaseActivity implements LockView,LockPatt
         mLockView.setDisplayMode(LockPatternView.DisplayMode.Wrong);
     }
 
-    @Override
-    public void setResults(int isSuccess) {
-
-    }
 
     @Override
     public void clearPattern() {

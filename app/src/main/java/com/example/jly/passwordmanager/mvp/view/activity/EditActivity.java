@@ -7,7 +7,6 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -60,7 +59,6 @@ public class EditActivity extends BaseSwipeBackActivity implements EditView {
 
     private EditActivityImpl mEditImpl;
     private MenuItem menuItem;
-    private AlertDialog mAlertDialog;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -116,10 +114,6 @@ public class EditActivity extends BaseSwipeBackActivity implements EditView {
         inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
     }
 
-    @Override
-    public void initEditModel() {
-
-    }
 
     @Override
     public void initViewModel(Password pw, int positionType) {
@@ -223,14 +217,7 @@ public class EditActivity extends BaseSwipeBackActivity implements EditView {
         builder.setMessage(msg);//
         builder.setPositiveButton(positiveMsg, mEditImpl);
         builder.setNegativeButton("取消", mEditImpl);
-        mAlertDialog = builder.show();
-    }
-
-    @Override
-    public void hideSaveDialog() {
-        if (null != mAlertDialog) {
-            mAlertDialog.dismiss();
-        }
+        builder.show();
     }
 
     @Override

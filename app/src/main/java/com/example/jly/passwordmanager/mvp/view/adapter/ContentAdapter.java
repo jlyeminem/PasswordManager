@@ -1,7 +1,6 @@
 package com.example.jly.passwordmanager.mvp.view.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,7 +13,6 @@ import android.widget.TextView;
 import com.example.jly.passwordmanager.R;
 import com.example.jly.passwordmanager.mvp.model.Constants;
 import com.example.jly.passwordmanager.mvp.model.bean.Password;
-import com.example.jly.passwordmanager.mvp.view.activity.SettingActivity;
 import com.example.jly.passwordmanager.utils.SPUtils;
 import com.example.jly.passwordmanager.utils.TimeUtils;
 
@@ -44,7 +42,7 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.ViewHold
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, final int position) {
+    public void onBindViewHolder(ViewHolder holder,final int position) {
         final Password password = mPasswords.get(position);
         if (password != null) {
             holder.mItemDate.setText(TimeUtils.getConciseTime(password.getTime(),mContext));

@@ -31,7 +31,7 @@ public class SettingFragment extends PreferenceFragment implements SettingView {
 
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
-        settingFImpl.onPreferenceTreeClick(preferenceScreen,preference);
+        settingFImpl.onPreferenceTreeClick(preference);
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
 
@@ -54,15 +54,6 @@ public class SettingFragment extends PreferenceFragment implements SettingView {
     @Override
     public void readyGo(Class clazz, Intent intent) {
         startActivityForResult(intent,0);
-    }
-
-    @Override
-    public void go2(Class clazz, Bundle bundle) {
-        Intent intent = new Intent(getActivity(), clazz);
-        if (bundle != null) {
-            intent.putExtras(bundle);
-        }
-        startActivity(intent);
     }
 
     @Override

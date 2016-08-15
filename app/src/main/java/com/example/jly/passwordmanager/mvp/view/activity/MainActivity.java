@@ -23,7 +23,6 @@ import com.example.jly.passwordmanager.mvp.view.adapter.ContentIndexAdapter;
 import com.example.jly.passwordmanager.utils.ShowToast;
 
 import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
 
 
 public class MainActivity extends BaseActivity implements MainView {
@@ -33,7 +32,6 @@ public class MainActivity extends BaseActivity implements MainView {
     private ActivityMainBinding mBinding;
 
     private MainActivityImpl mActivity;
-    private int MAIN_EVENT_SUCCESS = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -123,11 +121,10 @@ public class MainActivity extends BaseActivity implements MainView {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == MAIN_REQUEST_CODE) {
             if (resultCode == EDIT_SAVE) {
+                int MAIN_EVENT_SUCCESS = 1;
                 EventCenter eventCenter = new EventCenter(MAIN_EVENT_SUCCESS, true);
                 EventBus.getDefault().post(eventCenter);
             }
-        } else if (requestCode == SETTING_REQUEST_CODE) {
-
         }
     }
 
@@ -137,10 +134,6 @@ public class MainActivity extends BaseActivity implements MainView {
         startActivityForResult(intent, SETTING_REQUEST_CODE);
     }
 
-    @Override
-    public void showSnackBar(String msg) {
-
-    }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {

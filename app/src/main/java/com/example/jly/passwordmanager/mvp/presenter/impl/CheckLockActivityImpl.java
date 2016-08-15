@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 
 import com.example.jly.passwordmanager.R;
 import com.example.jly.passwordmanager.databinding.ActivityCheckLockBinding;

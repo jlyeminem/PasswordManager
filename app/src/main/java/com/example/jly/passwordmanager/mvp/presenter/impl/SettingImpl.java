@@ -4,7 +4,6 @@ package com.example.jly.passwordmanager.mvp.presenter.impl;
 import android.content.Context;
 import android.content.Intent;
 import android.preference.Preference;
-import android.preference.PreferenceScreen;
 import android.text.TextUtils;
 
 import com.example.jly.passwordmanager.mvp.model.Constants;
@@ -47,7 +46,7 @@ public class SettingImpl implements FragmentPresenter {
 
     }
 
-    public void onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
+    public void onPreferenceTreeClick(Preference preference) {
         String key = preference.getKey();
         if (TextUtils.equals(key, "开启手势密码")) {
             isOpen = !isOpen;

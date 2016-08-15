@@ -12,6 +12,5 @@ public interface SettingView {
     void initState(boolean isOpen);
     void initOpenShow(boolean isOpen);
     void readyGo(Class clazz, Intent intent);
-    void go2(Class clazz, Bundle bundle);
     void showSnackBar(String msg);
 }

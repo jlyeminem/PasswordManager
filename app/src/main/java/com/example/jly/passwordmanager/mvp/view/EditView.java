@@ -1,6 +1,5 @@
 package com.example.jly.passwordmanager.mvp.view;
 
-import android.support.v7.widget.Toolbar;
 
 import com.example.jly.passwordmanager.mvp.model.bean.Password;
 
@@ -13,7 +12,6 @@ public interface EditView {
 
     void initSpinner(List<String> data);
     void initCreateModel();
-    void initEditModel();
     void initViewModel(Password pw, int positionType);
     String getTitleName();
     String getUserName();
@@ -27,6 +25,5 @@ public interface EditView {
     void hideKeyBoard();
     void setToolBarTitle(int resId);
     void showDialog(String msg, String positiveMsg);
-    void hideSaveDialog();
     SwipeBackLayout getSwipeBack();
 }
